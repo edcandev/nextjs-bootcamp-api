@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tg.nextjsbootcampapi.dto.UsersList;
 import com.tg.nextjsbootcampapi.model.User;
 import com.tg.nextjsbootcampapi.repository.UserRepository;
-import com.tg.nextjsbootcampapi.service.InitialInsertionService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

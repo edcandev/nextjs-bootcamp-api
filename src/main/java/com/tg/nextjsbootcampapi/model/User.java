@@ -1,8 +1,6 @@
 package com.tg.nextjsbootcampapi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
-import org.hibernate.type.NumericBooleanConverter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,28 +9,28 @@ import java.util.Collection;
 import java.util.List;
 
 
-@Entity
-@Table(name = "users")
+//@Entity
+//@Table(name = "users")
 public class User implements UserDetails {
 
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  //@Id
+  //@GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String email;
 
-    @Column(name = "first_name")
+    //@Column(name = "first_name")
     @JsonProperty("first_name")
     private String firstName;
 
 
-  @Column(name = "last_name")
+  //@Column(name = "last_name")
   @JsonProperty("last_name")
   private String lastName;
 
 
-  @Enumerated(EnumType.STRING)
-  @Column(name = "job_title")
+  //@Enumerated(EnumType.STRING)
+  //@Column(name = "job_title")
   @JsonProperty("job_title")
   private JobTitle jobTitle;
 
@@ -42,13 +40,13 @@ public class User implements UserDetails {
     this.password = password;
   }
 
-  @Column(name = "has_project")
+  //@Column(name = "has_project")
   @JsonProperty("has_project")
-  @Convert( converter = NumericBooleanConverter.class)
+  //@Convert( converter = NumericBooleanConverter.class)
   private Boolean hasProject = false;
 
-  @Column(name = "active")
-  @Convert( converter = NumericBooleanConverter.class)
+  //@Column(name = "active")
+  //@Convert( converter = NumericBooleanConverter.class)
   private Boolean active = true;
 
   public Boolean getActive() {

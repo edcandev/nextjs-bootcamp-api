@@ -2,7 +2,6 @@ package com.tg.nextjsbootcampapi.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tg.nextjsbootcampapi.model.JobTitle;
-import jakarta.persistence.Column;
 
 public class UserResponse {
 
