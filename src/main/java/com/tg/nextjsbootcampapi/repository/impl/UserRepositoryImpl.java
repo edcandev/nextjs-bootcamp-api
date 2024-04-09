@@ -7,22 +7,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.*;
 
 @Repository
 public class UserRepositoryImpl implements UserRepository {
   Logger LOGGER = LoggerFactory.getLogger(UserRepositoryImpl.class);
 
-  private final PasswordEncoder passwordEncoder;
-
   private List<User> users = new ArrayList<>();
 
   public UserRepositoryImpl(PasswordEncoder passwordEncoder) {
-    this.passwordEncoder = passwordEncoder;
 
     LOGGER.info("[INSERTING INITIAL DATA]");
 
@@ -30,7 +27,10 @@ public class UserRepositoryImpl implements UserRepository {
 
     try {
 
-      File file = ResourceUtils.getFile("classpath:data.json");
+      // File file = ResourceUtils.getFile("classpath:data.json");
+      String userDirectory = System.getProperty("user.dir");
+      File file = Path.of(userDirectory,"data/data.json").toFile();
+      System.out.println(file.getPath());
 
       this.users = Arrays.stream(mapper.readValue(file, User[].class))
           .toList()
@@ -39,7 +39,7 @@ public class UserRepositoryImpl implements UserRepository {
           .toList();
 
       this.users = users.stream().peek(user -> user.setId(users.indexOf(user) + 1)).toList();
-
+      System.out.println(users);
 
     } catch (
         IOException e) {
