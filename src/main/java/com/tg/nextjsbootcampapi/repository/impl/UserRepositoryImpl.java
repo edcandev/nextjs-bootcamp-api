@@ -27,10 +27,9 @@ public class UserRepositoryImpl implements UserRepository {
 
     try {
 
-      // File file = ResourceUtils.getFile("classpath:data.json");
-      String userDirectory = System.getProperty("user.dir");
-      File file = Path.of(userDirectory,"data/data.json").toFile();
-      System.out.println(file.getPath());
+      Path path = Path.of("data/data.json").toAbsolutePath();
+      System.out.println(path);
+      File file = path.toFile();
 
       this.users = Arrays.stream(mapper.readValue(file, User[].class))
           .toList()
